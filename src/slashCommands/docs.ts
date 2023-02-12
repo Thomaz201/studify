@@ -3,7 +3,7 @@ import { SlashCommand } from "../types";
 
 const row = new ActionRowBuilder<StringSelectMenuBuilder>()
   .addComponents(new StringSelectMenuBuilder()
-    .setCustomId("select")
+    .setCustomId("docs")
     .setPlaceholder("Nenhuma linguagem selecionada")
     .addOptions({
         label: "javascript",
