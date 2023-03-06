@@ -1,6 +1,6 @@
 import * as dotenv from "dotenv";
 import { ActivityType, ChannelType, Client, Events, GatewayIntentBits, Interaction } from "discord.js";
-import { joinVoiceChannel, VoiceConnectionStatus  } from "@discordjs/voice";
+import { AudioPlayerStatus, joinVoiceChannel, VoiceConnectionStatus  } from "@discordjs/voice";
 import ytdl from "ytdl-core";
 
 import { isURLFromLiveVideo, liveMusicPlayer, playLiveMusic } from "./handler/MusicPlayer";
@@ -50,15 +50,15 @@ client.on(Events.ClientReady, async () => {
     console.log('message connection', message)
   });
 
-  // setInterval(async () => {
-  //   if (codefyChannel.members.size <= 1) {
-  //     liveMusicPlayer.stop();
-  //   } else if (liveMusicPlayer.state.status == AudioPlayerStatus.Idle) {
-  //     await playLiveMusic(process.env.DEFAULT_LIVE_YOUTUBE_MUSIC!);
-  //   } else {
-  //     liveMusicPlayer.unpause();
-  //   }
-  // }, 15000);
+  setInterval(async () => {
+    if (codefyChannel.members.size <= 1) {
+      liveMusicPlayer.stop();
+    } else if (liveMusicPlayer.state.status == AudioPlayerStatus.Idle) {
+      await playLiveMusic(process.env.DEFAULT_LIVE_YOUTUBE_MUSIC!);
+    } else {
+      liveMusicPlayer.unpause();
+    }
+  }, 15000);
 
 });
 

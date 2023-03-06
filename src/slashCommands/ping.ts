@@ -1,5 +1,4 @@
 import { SlashCommandBuilder } from "discord.js";
-import { color } from "../functions/colors";
 import { SlashCommand } from "../types";
 
 const command: SlashCommand = {
@@ -7,7 +6,7 @@ const command: SlashCommand = {
     .setName('ping')
     .setDescription('Responde com pong 🏓'),
   async execute(interaction) {
-    await interaction.reply(` ${color("info", "Pong!")} 🏓`);
+    await interaction.reply("Pong! 🏓");
   },
 }
 
