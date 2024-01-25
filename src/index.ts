@@ -1,6 +1,6 @@
 import * as dotenv from "dotenv";
 import { ActivityType, ChannelType, Client, Events, GatewayIntentBits, Interaction } from "discord.js";
-import { AudioPlayerStatus, joinVoiceChannel, VoiceConnectionStatus  } from "@discordjs/voice";
+import { AudioPlayerStatus, DiscordGatewayAdapterCreator, joinVoiceChannel, VoiceConnectionStatus  } from "@discordjs/voice";
 import ytdl from "ytdl-core";
 
 import { isURLFromLiveVideo, liveMusicPlayer, playLiveMusic } from "./handler/MusicPlayer";
@@ -39,7 +39,7 @@ client.on(Events.ClientReady, async () => {
   const codefyConnection = joinVoiceChannel({
     channelId: codefyChannel.id,
     guildId: codefyChannel.guild.id,
-    adapterCreator: codefyChannel.guild.voiceAdapterCreator,
+    adapterCreator: codefyChannel.guild.voiceAdapterCreator as DiscordGatewayAdapterCreator,
   });
 
   codefyConnection.subscribe(liveMusicPlayer);
