@@ -1,9 +1,9 @@
 import * as dotenv from "dotenv";
 import { ActivityType, ChannelType, Client, Events, GatewayIntentBits, Interaction } from "discord.js";
 import { AudioPlayerStatus, DiscordGatewayAdapterCreator, joinVoiceChannel, VoiceConnectionStatus  } from "@discordjs/voice";
-import ytdl from "ytdl-core";
+// import ytdl from "ytdl-core";
 
-import { isURLFromLiveVideo, liveMusicPlayer, playLiveMusic } from "./handler/MusicPlayer";
+// import { isURLFromLiveVideo, liveMusicPlayer, playLiveMusic } from "./handler/MusicPlayer";
 
 import loadCommands from "./handler/Commands";
 import { createAWSCertificationsEmbed, selectMenusResponses } from "./data/selectInterationData";
@@ -42,23 +42,23 @@ client.on(Events.ClientReady, async () => {
     adapterCreator: codefyChannel.guild.voiceAdapterCreator as DiscordGatewayAdapterCreator,
   });
 
-  codefyConnection.subscribe(liveMusicPlayer);
+  // codefyConnection.subscribe(liveMusicPlayer);
 
-  await playLiveMusic(process.env.DEFAULT_LIVE_YOUTUBE_MUSIC!);
+  // await playLiveMusic(process.env.DEFAULT_LIVE_YOUTUBE_MUSIC!);
 
   codefyConnection.on('debug', (message) => {
     console.log('message connection', message)
   });
 
-  setInterval(async () => {
-    if (codefyChannel.members.size <= 1) {
-      liveMusicPlayer.stop();
-    } else if (liveMusicPlayer.state.status == AudioPlayerStatus.Idle) {
-      await playLiveMusic(process.env.DEFAULT_LIVE_YOUTUBE_MUSIC!);
-    } else {
-      liveMusicPlayer.unpause();
-    }
-  }, 15000);
+  // setInterval(async () => {
+  //   if (codefyChannel.members.size <= 1) {
+  //     liveMusicPlayer.stop();
+  //   } else if (liveMusicPlayer.state.status == AudioPlayerStatus.Idle) {
+  //     await playLiveMusic(process.env.DEFAULT_LIVE_YOUTUBE_MUSIC!);
+  //   } else {
+  //     liveMusicPlayer.unpause();
+  //   }
+  // }, 15000);
 
 });
 
@@ -82,21 +82,21 @@ client.on(Events.InteractionCreate, async (interaction: Interaction) => {
       try {
         const url = String(interaction.options.get('url')?.value);
 
-        if (!ytdl.validateURL(url)) {
-          interaction.reply('Tive um problema para entender a sua url, tem certeza que ela é válida e é do YouTube?');
+        // if (!ytdl.validateURL(url)) {
+        //   interaction.reply('Tive um problema para entender a sua url, tem certeza que ela é válida e é do YouTube?');
       
-          return;
-        }
+        //   return;
+        // }
       
-        const isLiveVideoUrl = await isURLFromLiveVideo(url);
+        // const isLiveVideoUrl = await isURLFromLiveVideo(url);
       
-        if (!isLiveVideoUrl) {
-          interaction.reply('Oops! Parece que a url que você me enviou não é de uma live... Tente enviar essa url para o meu irmão Music Bot no comando "/play-youtube-music"');
+        // if (!isLiveVideoUrl) {
+        //   interaction.reply('Oops! Parece que a url que você me enviou não é de uma live... Tente enviar essa url para o meu irmão Music Bot no comando "/play-youtube-music"');
       
-          return;
-        }
+        //   return;
+        // }
 
-        playLiveMusic(url);
+        // playLiveMusic(url);
 
       } catch (error) {
         console.error('Iih, deu ruim com esse comando!', error);

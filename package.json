@@ -12,6 +12,7 @@
   "dependencies": {
     "@discordjs/opus": "^0.9.0",
     "@discordjs/voice": "^0.14.0",
+    "axios": "^1.11.0",
     "chalk": "^5.2.0",
     "discord.js": "^14.14.1",
     "dotenv": "^16.0.3",
@@ -23,5 +24,6 @@
   "devDependencies": {
     "tsx": "^3.12.3",
     "typescript": "^4.9.5"
-  }
+  },
+  "packageManager": "yarn@1.22.21+sha1.1959a18351b811cdeedbd484a8f86c3cc3bbaf72"
 }

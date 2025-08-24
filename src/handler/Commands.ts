@@ -8,7 +8,7 @@ import { color } from "../functions/colors";
 dotenv.config();
 
 export default (client: Client) => {
-  const slashCommands: SlashCommandBuilder[] = [];
+  const slashCommands: any[] = [];
 
   client.slashCommands = new Collection<string, SlashCommand>();
 
